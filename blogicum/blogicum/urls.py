@@ -4,9 +4,11 @@ from django.views.generic.edit import CreateView
 from django.urls import path, include, reverse_lazy, reverse
 from django.shortcuts import redirect
 
+
 # Функция для перенаправления на страницу профиля
 def redirect_to_profile(request):
     return redirect(reverse('blog:profile', args=[request.user.username]))
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +28,6 @@ urlpatterns = [
     path('accounts/profile/', redirect_to_profile),
 ]
 
+
 handler404 = 'pages.views.page_not_found'
 handler500 = 'pages.views.server_error'
-
