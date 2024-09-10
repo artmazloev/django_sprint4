@@ -6,8 +6,10 @@ from . import views
 
 app_name = 'blog'
 
+
 def redirect_to_profile(request):
     return redirect(reverse('blog:profile', args=[request.user.username]))
+
 
 urlpatterns = [
     path('', views.PostListView.as_view(), name='index'),

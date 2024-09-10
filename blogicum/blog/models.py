@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.utils import timezone
 
 User = get_user_model()
 
@@ -43,7 +42,7 @@ class Location(PublishedCreated):
         max_length=256, verbose_name='Название места', default='Планета Земля'
     )
     created_at = models.DateTimeField(auto_now_add=True)
-    
+
     class Meta:
         verbose_name = 'местоположение'
         verbose_name_plural = 'Местоположения'
