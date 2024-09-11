@@ -21,7 +21,7 @@ class PublishedCreated(models.Model):
 
 
 class Category(PublishedCreated):
-    title = models.CharField(max_length=MAX_LENGTH_TITLE, 
+    title = models.CharField(max_length=MAX_LENGTH_TITLE,
                              verbose_name='Заголовок')
     description = models.TextField(verbose_name='Описание')
     slug = models.SlugField(
@@ -43,7 +43,7 @@ class Category(PublishedCreated):
 
 class Location(PublishedCreated):
     name = models.CharField(
-        max_length=MAX_LENGTH_TITLE, verbose_name='Название места', 
+        max_length=MAX_LENGTH_TITLE, verbose_name='Название места',
         default='Планета Земля'
     )
     created_at = models.DateTimeField(auto_now_add=True)
@@ -57,7 +57,7 @@ class Location(PublishedCreated):
 
 
 class Post(PublishedCreated):
-    title = models.CharField(max_length=MAX_LENGTH_TITLE, 
+    title = models.CharField(max_length=MAX_LENGTH_TITLE,
                              verbose_name='Название')
     text = models.TextField(verbose_name='Текст')
     pub_date = models.DateTimeField(
