@@ -18,11 +18,6 @@ class PostForm(forms.ModelForm):
                                         format='%Y-%m-%dT%H:%M')
         }
 
-def __init__(self, *args, **kwargs):
-        super(PostForm, self).__init__(*args, **kwargs)
-        if self.instance and self.instance.pub_date:
-            self.fields['pub_date'].initial = self.instance.pub_date.strftime('%Y-%m-%dT%H:%M')
-
 
 class CommentForm(forms.ModelForm):
     class Meta:

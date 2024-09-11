@@ -14,7 +14,6 @@ from .forms import CommentForm, PostForm, UserForm
 PAGINATOR = 10
 
 
-
 def filtered_post(posts, is_count_comments=True):
     posts_query = posts.filter(
         pub_date__lte=datetime.today(),
