@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import Category, Location, Post, Comment
+from .models import Category, Comment, Location, Post
 
 admin.site.empty_value_display = 'Не задано'
 

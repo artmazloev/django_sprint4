@@ -1,6 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
+from .constants import MAX_LENGTH_TITLE
+
+
 User = get_user_model()
 
 
@@ -18,7 +21,7 @@ class PublishedCreated(models.Model):
 
 
 class Category(PublishedCreated):
-    title = models.CharField(max_length=256, verbose_name='Заголовок')
+    title = models.CharField(max_length=MAX_LENGTH_TITLE, verbose_name='Заголовок')
     description = models.TextField(verbose_name='Описание')
     slug = models.SlugField(
         unique=True,
@@ -39,7 +42,7 @@ class Category(PublishedCreated):
 
 class Location(PublishedCreated):
     name = models.CharField(
-        max_length=256, verbose_name='Название места', default='Планета Земля'
+        max_length=MAX_LENGTH_TITLE, verbose_name='Название места', default='Планета Земля'
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -52,7 +55,7 @@ class Location(PublishedCreated):
 
 
 class Post(PublishedCreated):
-    title = models.CharField(max_length=256, verbose_name='Название')
+    title = models.CharField(max_length=MAX_LENGTH_TITLE, verbose_name='Название')
     text = models.TextField(verbose_name='Текст')
     pub_date = models.DateTimeField(
         verbose_name='Дата и время публикации',
@@ -67,7 +70,7 @@ class Post(PublishedCreated):
     )
     location = models.ForeignKey(
         Location, on_delete=models.SET_NULL,
-        null=True, verbose_name='Местоположение',
+        null=True, blank=True, verbose_name='Местоположение',
         related_name='posts'
     )
     category = models.ForeignKey(
@@ -84,7 +87,6 @@ class Post(PublishedCreated):
         ordering = ('-pub_date',)
 
     def __str__(self):
-        # return str(self.id)
         return (
             f'{(self.author.get_username())[:30]} - {self.title[:30]} '
             f'{self.text[:50]} - {self.pub_date} '

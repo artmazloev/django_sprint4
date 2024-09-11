@@ -11,9 +11,8 @@ from django.views.generic import (
 from .models import Category, Comment, Post, User
 from .forms import CommentForm, PostForm, UserForm
 
-PAGINATOR_POST = 10
-PAGINATOR_CATEGORY = 10
-PAGINATOR_PROFILE = 10
+PAGINATOR = 10
+
 
 
 def filtered_post(posts, is_count_comments=True):
@@ -30,7 +29,7 @@ def filtered_post(posts, is_count_comments=True):
 
 
 class PostListView(ListView):
-    paginate_by = PAGINATOR_POST
+    paginate_by = PAGINATOR
     template_name = 'blog/index.html'
 
     def get_queryset(self):
@@ -67,7 +66,7 @@ class PostCategoryView(ListView):
     model = Post
     template_name = 'blog/category.html'
     context_object_name = 'page_obj'
-    paginate_by = PAGINATOR_CATEGORY
+    paginate_by = PAGINATOR
 
     def get_queryset(self):
         self.category = get_object_or_404(
@@ -140,7 +139,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
 
 
 class ProfileListView(ListView):
-    paginate_by = PAGINATOR_PROFILE
+    paginate_by = PAGINATOR
     template_name = 'blog/profile.html'
     model = Post
 
