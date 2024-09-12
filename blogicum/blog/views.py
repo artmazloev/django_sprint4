@@ -5,7 +5,7 @@ from django.db.models import Count
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import (
-    CreateView, DeleteView, DetailView,  ListView, UpdateView
+    CreateView, DeleteView, DetailView, ListView, UpdateView
 )
 
 from .models import Category, Comment, Post, User
