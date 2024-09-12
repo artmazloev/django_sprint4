@@ -1,8 +1,8 @@
-from django.urls import path
 from django.shortcuts import redirect
-from django.urls import reverse
+from django.urls import path, reverse
 
 from . import views
+
 
 app_name = 'blog'
 
